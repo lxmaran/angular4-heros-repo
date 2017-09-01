@@ -28,16 +28,7 @@ let Heroes = class Heroes {
 Heroes = __decorate([
     core_1.Component({
         selector: 'heroes',
-        template: `
-                <ul class="heroes">
-                <li *ngFor="let hero of heroes; let i=index" 
-                    (click)="onSelect(hero)" 
-                    [class.selected]="hero === selectedHero">
-                <span class="badge">{{i + 1}}</span> {{hero.name}}
-                </li>
-                </ul>
-                <hero-detail [hero]="selectedHero"></hero-detail>
-             `,
+        templateUrl: './heroes.component.html',
         styles: [styles_1.Styles.heroes],
     }),
     __metadata("design:paramtypes", [hero_service_1.default])

@@ -10,6 +10,9 @@ let HeroService = class HeroService {
     getHeroes() {
         return Promise.resolve(HEROES);
     }
+    getHero(id) {
+        return Promise.resolve(HEROES.find(x => x.id === id));
+    }
 };
 HeroService = __decorate([
     core_1.Injectable()
