@@ -17,12 +17,13 @@ const heroes_component_1 = require("./components/heroes.component");
 const hero_service_1 = require("./services/hero.service");
 const Router_1 = require("./Router");
 const dashboard_component_1 = require("./components/dashboard.component");
+const hero_search_component_1 = require("./components/hero-search.component");
 let AppModule = class AppModule {
 };
 AppModule = __decorate([
     core_1.NgModule({
         imports: [platform_browser_1.BrowserModule, forms_1.FormsModule, Router_1.default, http_1.HttpModule, angular_in_memory_web_api_1.InMemoryWebApiModule.forRoot(in_memory_data_service_1.InMemoryDataService),],
-        declarations: [hero_detail_component_1.default, app_component_1.AppComponent, heroes_component_1.default, dashboard_component_1.default],
+        declarations: [hero_detail_component_1.default, app_component_1.AppComponent, heroes_component_1.default, dashboard_component_1.default, hero_search_component_1.default],
         bootstrap: [app_component_1.AppComponent],
         providers: [hero_service_1.default],
     })

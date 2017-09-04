@@ -12,10 +12,12 @@ import HeroesComponent from "./components/heroes.component";
 import HeroService from "./services/hero.service";
 import AppRoutingModule from "./Router";
 import DashboardComponent from "./components/dashboard.component";
+import HeroSearchService from "./services/hero-search.service";
+import HeroSearchComponent from "./components/hero-search.component";
 
 @NgModule({
   imports: [BrowserModule, FormsModule, AppRoutingModule, HttpModule, InMemoryWebApiModule.forRoot(InMemoryDataService),],
-  declarations: [HeroDetailComponent, AppComponent, HeroesComponent, DashboardComponent],
+  declarations: [HeroDetailComponent, AppComponent, HeroesComponent, DashboardComponent, HeroSearchComponent],
   bootstrap: [AppComponent],
   providers: [HeroService],
 })
