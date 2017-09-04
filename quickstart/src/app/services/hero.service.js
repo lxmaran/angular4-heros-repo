@@ -5,30 +5,62 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
 const core_1 = require("@angular/core");
+const http_1 = require("@angular/http");
+require("rxjs/add/operator/toPromise");
 let HeroService = class HeroService {
+    constructor(http) {
+        this.http = http;
+        this.api = 'api/heroes';
+        this.headers = new http_1.Headers({ 'Content-Type': 'application/json' });
+    }
     getHeroes() {
-        return Promise.resolve(HEROES);
+        return this.http
+            .get(this.api)
+            .toPromise()
+            .then(data => data.json().data)
+            .catch(this.errorHandler);
+    }
+    errorHandler(err) {
+        console.log('Err: ', err);
+        return Promise.reject(err.message || err);
     }
     getHero(id) {
-        return Promise.resolve(HEROES.find(x => x.id === id));
+        return this.http
+            .get(this.api + `/${id}`)
+            .toPromise()
+            .then(data => data.json().data)
+            .catch(this.errorHandler);
+    }
+    updateHero(hero) {
+        return this.http
+            .put(this.api + `/${hero.id}`, JSON.stringify(hero), { headers: this.headers })
+            .toPromise()
+            .then(data => data)
+            .catch(this.errorHandler);
+    }
+    addHero(name) {
+        return this.http
+            .post(this.api, JSON.stringify({ name: name }), { headers: this.headers })
+            .toPromise()
+            .then(data => data.json().data)
+            .catch(this.errorHandler);
+    }
+    delete(id) {
+        return this.http
+            .delete(this.api + `/${id}`)
+            .toPromise()
+            .then()
+            .catch(this.errorHandler);
     }
 };
 HeroService = __decorate([
-    core_1.Injectable()
+    core_1.Injectable(),
+    __metadata("design:paramtypes", [http_1.Http])
 ], HeroService);
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.default = HeroService;
-const HEROES = [
-    { id: 11, name: 'Mr. Nice' },
-    { id: 12, name: 'Narco' },
-    { id: 13, name: 'Bombasto' },
-    { id: 14, name: 'Celeritas' },
-    { id: 15, name: 'Magneta' },
-    { id: 16, name: 'RubberMan' },
-    { id: 17, name: 'Dynama' },
-    { id: 18, name: 'Dr IQ' },
-    { id: 19, name: 'Magma' },
-    { id: 20, name: 'Tornado' }
-];
 //# sourceMappingURL=hero.service.js.map

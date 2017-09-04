@@ -8,6 +8,9 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 const core_1 = require("@angular/core");
 const platform_browser_1 = require("@angular/platform-browser");
 const forms_1 = require("@angular/forms");
+const http_1 = require("@angular/http");
+const angular_in_memory_web_api_1 = require("angular-in-memory-web-api");
+const in_memory_data_service_1 = require("./api/in-memory-data.service");
 const app_component_1 = require("./components/app.component");
 const hero_detail_component_1 = require("./components/hero-detail.component");
 const heroes_component_1 = require("./components/heroes.component");
@@ -18,7 +21,7 @@ let AppModule = class AppModule {
 };
 AppModule = __decorate([
     core_1.NgModule({
-        imports: [platform_browser_1.BrowserModule, forms_1.FormsModule, Router_1.Router],
+        imports: [platform_browser_1.BrowserModule, forms_1.FormsModule, Router_1.default, http_1.HttpModule, angular_in_memory_web_api_1.InMemoryWebApiModule.forRoot(in_memory_data_service_1.InMemoryDataService),],
         declarations: [hero_detail_component_1.default, app_component_1.AppComponent, heroes_component_1.default, dashboard_component_1.default],
         bootstrap: [app_component_1.AppComponent],
         providers: [hero_service_1.default],

@@ -1,22 +1,20 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import {
-  FormsModule
-} from '@angular/forms';
+import { FormsModule } from '@angular/forms';
+import { HttpModule } from '@angular/http';
 
-import {
-  AppComponent
-} from "./components/app.component";
+import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
+import { InMemoryDataService }  from './api/in-memory-data.service';
+
+import { AppComponent } from "./components/app.component";
 import HeroDetailComponent from "./components/hero-detail.component";
 import HeroesComponent from "./components/heroes.component";
 import HeroService from "./services/hero.service";
-import {
-  Router
-} from "./Router";
+import AppRoutingModule from "./Router";
 import DashboardComponent from "./components/dashboard.component";
 
 @NgModule({
-  imports: [BrowserModule, FormsModule, Router],
+  imports: [BrowserModule, FormsModule, AppRoutingModule, HttpModule, InMemoryWebApiModule.forRoot(InMemoryDataService),],
   declarations: [HeroDetailComponent, AppComponent, HeroesComponent, DashboardComponent],
   bootstrap: [AppComponent],
   providers: [HeroService],

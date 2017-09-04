@@ -24,7 +24,8 @@ let DashboardComponent = class DashboardComponent {
 DashboardComponent = __decorate([
     core_1.Component({
         selector: 'dashboard',
-        templateUrl: './dashboard.component.html'
+        templateUrl: './dashboard.component.html',
+        styleUrls: ['./dashboard.components.css']
     }),
     __metadata("design:paramtypes", [hero_service_1.default])
 ], DashboardComponent);

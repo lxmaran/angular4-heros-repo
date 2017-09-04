@@ -27,11 +27,16 @@ let HeroDetailComponent = class HeroDetailComponent {
     goBack() {
         this.location.back();
     }
+    updateHero() {
+        this.heroService.updateHero(this.hero);
+        this.goBack();
+    }
 };
 HeroDetailComponent = __decorate([
     core_1.Component({
         selector: 'hero-detail',
         templateUrl: './hero-detail.component.html',
+        styleUrls: ['./hero-detail.component.css']
     }),
     __metadata("design:paramtypes", [hero_service_1.default,
         router_1.ActivatedRoute,

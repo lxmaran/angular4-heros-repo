@@ -7,7 +7,8 @@ import HeroService from "../services/hero.service";
 
 @Component({
   selector: 'hero-detail',
-  templateUrl: './hero-detail.component.html', 
+  templateUrl: './hero-detail.component.html',
+  styleUrls: [ './hero-detail.component.css' ]
 })
 
 export default class HeroDetailComponent implements OnInit{
@@ -28,6 +29,11 @@ export default class HeroDetailComponent implements OnInit{
 
   goBack(): void {
     this.location.back();
+  }
+
+  updateHero(): void {
+    this.heroService.updateHero(this.hero);
+    this.goBack();
   }
 
 }
